@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.</declaration>
+	<template>
+		<name x="5" y="5">Joueur</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id0" x="0" y="0">
+		</location>
+		<init ref="id0"/>
+	</template>
+	<template>
+		<name>Phases</name>
+		<location id="id1" x="1054" y="0">
+		</location>
+		<location id="id2" x="952" y="272">
+		</location>
+		<location id="id3" x="68" y="272">
+		</location>
+		<location id="id4" x="807" y="272">
+		</location>
+		<location id="id5" x="629" y="272">
+		</location>
+		<location id="id6" x="450" y="272">
+		</location>
+		<location id="id7" x="238" y="272">
+		</location>
+		<location id="id8" x="892" y="0">
+		</location>
+		<location id="id9" x="714" y="0">
+		</location>
+		<location id="id10" x="544" y="0">
+		</location>
+		<location id="id11" x="340" y="0">
+		</location>
+		<location id="id12" x="161" y="0">
+		</location>
+		<location id="id13" x="-136" y="0">
+		</location>
+		<location id="id14" x="-391" y="0">
+		</location>
+		<init ref="id14"/>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="910" y="-17">cleanup!</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="732" y="119">postcombat!</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="825" y="255">endcombat!</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="86" y="119">begincombat!</label>
+			<nail x="544" y="136"/>
+			<nail x="68" y="136"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="647" y="255">damage!</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="468" y="255">firststrike</label>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="256" y="255">block!</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="86" y="255">attack!</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="732" y="-17">endstep!</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="358" y="-17">precombat!</label>
+			<label kind="comments" x="348" y="17">One land and any card
+ can be played</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id11"/>
+			<label kind="synchronisation" x="204" y="-17">draw!</label>
+			<label kind="comments" x="187" y="17">Draw a card</label>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-8" y="-17">upkeep!</label>
+			<label kind="comments" x="-110" y="8">Any player can cast instants and
+activate activated abilities 
+from now on</label>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="-306" y="-17">uptap!</label>
+			<label kind="comments" x="-365" y="8">Désengagement des cartes</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = Template();
+// List one or more processes to be composed into a system.
+system Process;
+    </system>
+	<queries>
+	</queries>
+</nta>
